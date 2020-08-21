@@ -597,7 +597,6 @@ def shaper_one(sim_num,pixelscale,fwhm_kpc,size=18,floc='./subhalos/',fout_loc='
 
     # loop!
     while p1 <= nn:
-        print(p1)
         # Rotate data to random viewpoint and create the image (mass or lum. map).
         # This is saved to a fit file to be read by profit (R).
         phi,theta,psi = rand_vp()
@@ -617,10 +616,8 @@ def shaper_one(sim_num,pixelscale,fwhm_kpc,size=18,floc='./subhalos/',fout_loc='
 
         # Attempt to run profit on image, sometimes this fails...
         try:
-            pro_out = subp.run(['Rscript','Illtest.R',profout],capture_output=True).stdout
+            pro_out = subp.run(['Rscript','Ill_profit.R',profout],capture_output=True).stdout
             prcount=0
-            print(pro_out)
-            print('\n')
         except:
             pro_out = 'Fail'
 
